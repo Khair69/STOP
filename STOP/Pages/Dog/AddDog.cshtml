@@ -1,0 +1,28 @@
+﻿@page
+@model AddDogModel
+@{
+    ViewData["Title"] = "Add your dog!!";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="col-md-4">
+    <form asp-page="AddDog">
+        <div class="form-floating mb-3">
+            <input asp-for="InDog.Name" class="form-control" placeholder="Name"/>
+            <label asp-for="InDog.Name"></label>
+            <span asp-validation-for="InDog.Name" class="text-danger"></span>
+        </div> 
+        <div class="form-floating mb-3">
+            <input asp-for="InDog.DateOfBirth" class="form-control"/>
+            <label asp-for="InDog.DateOfBirth"></label>
+            <span asp-validation-for="InDog.DateOfBirth" class="text-danger"></span>
+        </div>       
+        <div class="form-floating mb-3">
+            <textarea asp-for="InDog.Description" class="form-control" placeholder="Description"></textarea>
+            <label asp-for="InDog.Description"></label>
+            <span asp-validation-for="InDog.Description" class="text-danger"></span>
+        </div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">Add</button>
+    </form>
+</div>

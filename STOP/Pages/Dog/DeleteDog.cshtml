@@ -1,0 +1,22 @@
+﻿@page "{id}"
+@model STOP.Pages.Dog.DeleteDogModel
+@{
+    ViewData["Title"] = "Delete Dog!!";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>are you sure you want to delete this poor dog?</h3>
+<h3>take a minute to think about this.</h3>
+<h3>the dog will be deleted permanently!!</h3>
+<h3>the dog will <i class="text-danger">remember that</i>.</h3>
+<hr />
+<h4>Name: @Model.DogEntity.Name</h4>
+<h4>Date of birth: @Model.DogEntity.DateOfBirth.ToString("dd/MM/yyyy")</h4>
+<h4>Description: @Model.DogEntity.Description</h4>
+<h4>Owner's Name: @Model.DogEntity.Owner.FirstName @Model.DogEntity.Owner.LastName</h4>
+
+<form asp-page="DeleteDog">
+    <input asp-for="DogId" value="@Model.DogEntity.DogId" type="hidden" />
+    <button type="submit" class="w-100 btn btn-danger btn-primary">Delete</button>
+</form>

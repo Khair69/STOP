@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    @if(Model.IsSignedIn)
+    {
+        <h1 class="display-4">Welcome</h1>
+        <h3>your favorite color is @User.Claims.FirstOrDefault(x=>x.Type == "FavColor")?.Value</h3>
+        <h4>Damn you're @(DateTime.Now.Year - Model.CurrentUser?.DateOfBirth.Year) that's old af</h4>
+    }
+    else
+    {
+        <h1 class="display-4">Not Welcome</h1>
+        <h3>Please Sign In.</h3>
+    }
+</div>

@@ -1,0 +1,28 @@
+﻿@page "{id}"
+@model STOP.Pages.Dog.EditDogModel
+@{
+    ViewData["Title"] = "Edit your dog's info";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="col-md-4">
+    <form asp-page="EditDog">
+        <div class="form-floating mb-3">
+            <input asp-for="EditedDog.Name" class="form-control" placeholder="Name" value="@Model.DogEntity.Name"/>
+            <label asp-for="EditedDog.Name"></label>
+            <span asp-validation-for="EditedDog.Name" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="EditedDog.DateOfBirth" class="form-control" value="@Model.DogEntity.DateOfBirth.ToString("yyyy-MM-dd")" />
+            <label asp-for="EditedDog.DateOfBirth"></label>
+            <span asp-validation-for="EditedDog.DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" rows="5" data-val="true" data-val-length="The dog's description can't be shorter than 2 and longer than 100" data-val-length-max="100" data-val-length-min="2" data-val-required="The Description field is required." id="EditedDog_Description" maxlength="100" name="EditedDog.Description">@Model.DogEntity.Description</textarea>
+            <label asp-for="EditedDog.Description"></label>
+            <span asp-validation-for="EditedDog.Description" class="text-danger"></span>
+        </div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">Edit</button>
+    </form>
+</div>

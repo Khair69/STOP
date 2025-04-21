@@ -1,0 +1,73 @@
+﻿@page
+@model STOP.Pages.Accounts.IndexModel
+@{
+    ViewData["Title"] = "Manage Accounts";
+}
+
+@if (Model.UsersWithClaims.Any())
+{
+    <div class="panel panel-default table-panel">
+        <div class="panel-heading"><h3>Regular Accounts:</h3></div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Favorite Color</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var (user, favColor) in Model.UsersWithClaims)
+                {
+                    <tr>
+                        <td>@user.FirstName @user.LastName</td>
+                        <td>@user.Email</td>
+                        <td>@user.DateOfBirth.Date.ToString("dd/MM/yyyy")</td>
+                        <td>@favColor</td>
+                        <td><a asp-page="/Accounts/MakeAdmin" asp-route-id=@user.Id class="w-100 btn btn-dark btn-primary">Make Admin</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">No users found.</div>
+}
+
+@if (Model.AdminsWithClaims.Any())
+{
+    <div class="panel panel-default table-panel">
+        <div class="panel-heading"><h3>Admin Accounts:</h3></div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Favorite Color</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var (user, favColor) in Model.AdminsWithClaims)
+                {
+                    <tr>
+                        <td>@user.FirstName @user.LastName</td>
+                        <td>@user.Email</td>
+                        <td>@user.DateOfBirth.Date.ToString("dd/MM/yyyy")</td>
+                        <td>@favColor</td>
+                        <td><a asp-page="/Accounts/RemoveAdmin" asp-route-id=@user.Id class="w-100 btn btn-dark btn-danger">Remove Admin</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">No users found.</div>
+}
