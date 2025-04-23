@@ -31,7 +31,6 @@ namespace STOP.Pages.Dog
             {
                 return new ForbidResult();
             }
-            Console.WriteLine(DogEntity.Name);
             return Page();
         }
 
@@ -39,7 +38,6 @@ namespace STOP.Pages.Dog
         {
             if (!ModelState.IsValid)
             {
-                Console.WriteLine("invalid");
                 return Page();
             }
 

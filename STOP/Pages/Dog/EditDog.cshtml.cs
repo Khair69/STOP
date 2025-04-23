@@ -23,6 +23,10 @@ namespace STOP.Pages.Dog
         public async Task<IActionResult> OnGetAsync(Guid id)
         {
             DogEntity = await _dogService.GetDogByIdAsync(id);
+            if (DogEntity == null)
+            {
+                return NotFound();
+            }
             AuthorizationResult authResult = await _authService.AuthorizeAsync(User, DogEntity, "CanManageDog");
             if (!authResult.Succeeded)
             {
