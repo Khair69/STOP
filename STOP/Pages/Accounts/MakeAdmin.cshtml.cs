@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using STOP.Services;
 
 namespace STOP.Pages.Accounts
 {
+    [Authorize("IsAdmin")]
     public class MakeAdminModel : PageModel
     {
         private readonly IUserService _userService;
